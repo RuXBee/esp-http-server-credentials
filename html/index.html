@@ -76,13 +76,40 @@
 </head>
 
 <body>
-    <form action="/wifi/cred" method="get" class="box" id="my-form">
+    <form action="javascript:void(0);" class="box" id="my-form">
         <h1>WiFi Credentials</h1>
-        <div class="part"><input name="device_name" type="text"     maxlength="10"  placeholder="Device Name"></div>
-        <div class="part"><input name="ssid"        type="text"     maxlength="20"  placeholder="WiFi SSID"></div>
-        <div class="part"><input name="password"    type="password" maxlength="10"  placeholder="WiFi Password"></div>
-        <input type="submit" value="Register">
+        <div class="part"><input name="device_name" id="device_name" type="text"     maxlength="10"  placeholder="Device Name"></div>
+        <div class="part"><input name="ssid"        id="ssid"        type="text"     maxlength="20"  placeholder="WiFi SSID"></div>
+        <div class="part"><input name="password"    id="password"    type="password" maxlength="10"  placeholder="WiFi Password"></div>
+        <input type="submit" value="Register" onclick="submitData()">
     </form>
 </body>
 
+<script lang="javascript">
+    async function submitData() {
+        const device_name = document.getElementById("device_name").value;
+        const ssid = document.getElementById("ssid").value;
+        const pwd = document.getElementById("password").value;
+        
+        const body = {
+            "device_name": device_name,
+            "ssid": ssid,
+            "password": pwd
+        };
+
+        const response = await fetch("/wifi/cred", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        });
+        
+        const serverResponse = await response.text();
+
+    }
+</script>
+
 </html>
+
+  

@@ -25,6 +25,15 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "task.h": "c",
-        "cstring": "c"
+        "cstring": "c",
+        "wifi_manager.h": "c",
+        "ip4.h": "c",
+        "esp_event.h": "c",
+        "esp_wifi.h": "c",
+        "esp_mac.h": "c",
+        "esp_system.h": "c",
+        "esp_log.h": "c",
+        "freertos.h": "c",
+        "cjson.h": "c"
     }
 }
